@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import ToggleButton from '@material-ui/lab/ToggleButton'
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    color: 'white'
   },
   title: {
     flexGrow: 1,
@@ -63,40 +64,34 @@ const useStyles = makeStyles((theme) => ({
         width: '20ch',
       },
     },
-  },
+  }
 }));
 
 export default function SearchAppBar() {
   const classes = useStyles();
-  const [selected, setSelected] = useState(false);
+  const [view, setView] = useState('directory');
+
+  const handleView = (event, newView) => {
+    setView(newView);
+  };
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-            <Tooltip title="Resource List">
-                <ToggleButton
-                value="check"
-                selected={selected}
-                className={classes.menuButton}
-                color="inherit"
-                onChange={() => {
-                    setSelected(!selected);
-                }}
-                >
-                    <ListAltIcon />
-                </ToggleButton>
-            </Tooltip>
-            <Tooltip title="Map">
-                <IconButton
-                edge="start"
-                className={classes.menuButton}
-                color="inherit"
-                aria-label="open drawer"
-                >
+        <ToggleButtonGroup
+        value={view}
+        exclusive   
+        onChange={handleView}
+        aria-label="component view"
+        >
+            <ToggleButton value="directory" aria-label="directory button" className={classes.menuButton} color="inherit">
+                <ListAltIcon />
+            </ToggleButton>
+            <ToggleButton value="map" aria-label="map button" className={classes.menuButton} color="inherit">
                 <MapIcon />
-                </IconButton>
-            </Tooltip>
+            </ToggleButton>
+        </ToggleButtonGroup>
           <Typography className={classes.title} variant="h6" noWrap>
             Bhome - Resources for those looking for help
           </Typography>
