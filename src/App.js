@@ -1,14 +1,14 @@
 import './App.css';
 import {useState} from 'react'
-import Card from './components/Card'
 import Data from './utils/Data'
+import SearchAppBar from './components/AppBar'
 
 function App() {
   const [data, setData] = useState(Data)
   console.log(data)
   return (
     <div>
-      <Card />
+      <SearchAppBar />
       <h1>App yo!</h1>
     </div>
   );
