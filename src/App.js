@@ -6,6 +6,7 @@ import Data from './utils/Data'
 import SearchAppBar from './components/AppBar'
 import Directory from './components/Directory'
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,11 +27,10 @@ function App() {
   return (
     <div>
     <SearchAppBar />
-    <Grid container className={classes.root}>
-      <Directory data={data} />
-      <Grid container spacing={2} item sm={12} md={6}>
-        
-      </Grid>
+    <Grid container className={classes.root} >
+      <Box mt={10}>
+        <Directory data={data} />
+      </Box>
     </Grid>
     </div>
   );

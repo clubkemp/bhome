@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 
 export default function Directory(props) {
     return (
-        <Grid container justify="center" spacing={2} item sm={12} md={6}>
+        <Grid container justify="center" spacing={3} item sm={12}>
          {props.data.map(e=>{
                 return(
                 <Grid item>

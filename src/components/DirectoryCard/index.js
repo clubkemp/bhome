@@ -11,10 +11,14 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
+
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MapIcon from '@material-ui/icons/Map';
+import RestaurantIcon from '@material-ui/icons/Restaurant';
+import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+import HealingIcon from '@material-ui/icons/Healing';
+import HomeWorkIcon from '@material-ui/icons/HomeWork';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,17 +46,38 @@ const useStyles = makeStyles((theme) => ({
 export default function DirectoryCard({ data }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  console.log(data)
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const avatarGen = (category) =>{
+    if(category === 'Housing'){
+      return <HomeWorkIcon />
+    }else if(category === 'Substance use'){
+      return <HealingIcon />
+    }else if (category === 'Food'){
+      return <RestaurantIcon />
+    }else if (category ==='Mental Health'){
+      return <EmojiEmotionsIcon />
+    }else if (category === 'Multi'){
+      return <DoneAllIcon />
+    }else{
+      return 'O'
+    }
+    //     Housing
+// Substance use
+// Food
+// Mental Health
+// Multi
+// Other
+  }
 
   return (
     <Card className={classes.root}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            H
+            {avatarGen(data.Category)}
           </Avatar>
         }
         action={
