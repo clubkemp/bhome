@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar(props) {
   const classes = useStyles();
   const [view, setView] = useState('directory');
 
@@ -105,7 +105,9 @@ export default function SearchAppBar() {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              value={props.value}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={e=>props.handleSearch(e)}
             />
           </div>
         </Toolbar>

@@ -22,11 +22,18 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const [data, setData] = useState(Data)
+  const [search, setSearch] = useState('')
   const classes = useStyles();
-  console.log(data)
+  const handleSearch = (event) => {
+    if(event){
+      setSearch(event.target.value)
+      console.log("Searched")
+    }
+    
+  }
   return (
     <div>
-    <SearchAppBar />
+    <SearchAppBar value={search} handleSearch={handleSearch}/>
     <Grid container className={classes.root} >
       <Box mt={10}>
         <Directory data={data} />
