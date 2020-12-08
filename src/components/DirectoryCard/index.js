@@ -39,10 +39,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DirectoryCard() {
+export default function DirectoryCard({ data }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  console.log(data)
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -60,13 +60,13 @@ export default function DirectoryCard() {
             <MapIcon/>
           </IconButton>
         }
-        title="Program name here"
-        subheader="Organization name here"
+        title={data.program}
+        subheader={data.organization}
       />
       <CardMedia
         className={classes.media}
         image="http://placekitten.com/g/200/300"
-        title="Paella dish"
+        title="Org image"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -87,12 +87,13 @@ export default function DirectoryCard() {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <p>hours: Wednesday-Friday 8am-3pm</p>
-          <p>Address: 1234 Super Fake St. Bellingham Wa. 98225</p>
-          <p>Phone: 360 111 111</p>
-          <p>Website:<a href="www.google.com">www.google.com</a></p>
-          <p>Services: Housing</p>
-          <p>Target: Men</p>
+          <p>hours:</p>
+          <p>{data.hours}</p>
+          <p>Address:{data.address}</p>
+          <p>Phone: {data.phone}</p>
+          <p>Website:<a href={`${data.web}`} target="_blank">{data.web}</a></p>
+          <p>Services: {data.services}</p>
+          <p>Target: {data.target}</p>
         </CardContent>
       </Collapse>
     </Card>
