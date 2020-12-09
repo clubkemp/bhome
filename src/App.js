@@ -22,13 +22,15 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const [data, setData] = useState(Data)
+  const [filteredData, setFilteredData] = useState([])
   const [search, setSearch] = useState('')
   const classes = useStyles();
   const handleSearch = (event) => {
-    if(event){
       setSearch(event.target.value)
-      console.log("Searched")
-    }
+      const filtered = data.filter(item=>{
+        return item.program.toLowerCase().includes(search.toLowerCase())
+      })
+      setFilteredData(filtered)
     
   }
   return (
@@ -36,7 +38,7 @@ function App() {
     <SearchAppBar value={search} handleSearch={handleSearch}/>
     <Grid container className={classes.root} >
       <Box mt={10}>
-        <Directory data={data} />
+        <Directory data={(filteredData.length > 0 ? filteredData : data)} />
       </Box>
     </Grid>
     </div>
