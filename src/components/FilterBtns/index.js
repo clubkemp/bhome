@@ -7,6 +7,13 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
+import RestaurantIcon from '@material-ui/icons/Restaurant';
+import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+import HealingIcon from '@material-ui/icons/Healing';
+import HomeWorkIcon from '@material-ui/icons/HomeWork';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+
 export default function FilterBtns(props) {
   const [formats, setFormats] = React.useState(() => ['Housing', 'Substance use','Food', 'Mental Health', 'Multi', 'Other']);
 
@@ -18,17 +25,22 @@ export default function FilterBtns(props) {
   return (
     <ToggleButtonGroup value={formats} onChange={handleFormat} aria-label="text formatting">
       <ToggleButton value="Housing" aria-label="Housing">
-        <FormatBoldIcon />
+        <HomeWorkIcon />
       </ToggleButton>
       <ToggleButton value="Substance use" aria-label="Substance use">
-        <FormatItalicIcon />
+        <HealingIcon />
       </ToggleButton>
       <ToggleButton value="Food" aria-label="Food">
-        <FormatUnderlinedIcon />
+        <RestaurantIcon />
       </ToggleButton>
       <ToggleButton value="Mental Health" aria-label="Mental Health">
-        <FormatColorFillIcon />
-        <ArrowDropDownIcon />
+        <EmojiEmotionsIcon />
+      </ToggleButton>
+      <ToggleButton value="Multi" aria-label="Multi">
+        <DoneAllIcon />
+      </ToggleButton>
+      <ToggleButton value="Other" aria-label="Other">
+        <MoreVertIcon />
       </ToggleButton>
     </ToggleButtonGroup>
   );
