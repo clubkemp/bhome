@@ -38,7 +38,7 @@ function App() {
     <SearchAppBar value={search} handleSearch={handleSearch}/>
     <Grid container className={classes.root} >
       <Box mt={10}>
-        <Directory data={(filteredData.length > 0 ? filteredData : data)} />
+        <Directory data={(search.length > 0 ? filteredData : data)} />
       </Box>
     </Grid>
     </div>
