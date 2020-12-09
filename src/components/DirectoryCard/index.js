@@ -19,6 +19,7 @@ import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import HealingIcon from '@material-ui/icons/Healing';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,7 +63,7 @@ export default function DirectoryCard({ data }) {
     }else if (category === 'Multi'){
       return <DoneAllIcon />
     }else{
-      return 'O'
+      return <MoreVertIcon />
     }
     //     Housing
 // Substance use

@@ -1,12 +1,16 @@
 import './App.css';
-import {useState} from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import { spacing } from '@material-ui/system'
+import {useState, useEffect} from 'react'
+
+
 import Data from './utils/Data'
 import SearchAppBar from './components/AppBar'
 import Directory from './components/Directory'
+import FilterBtns from './components/FilterBtns'
+
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
+import { spacing } from '@material-ui/system'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,15 +26,33 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const [data, setData] = useState(Data)
+  
+  const [filter, setFilter] = useState(['Housing', 'Substance use','Food', 'Mental Health', 'Multi', 'Other'])
   const [filteredData, setFilteredData] = useState([])
+  
   const [search, setSearch] = useState('')
+  const [searchedData, setSearchedData] = useState([])
   const classes = useStyles();
+
+  useEffect(()=>{
+    const filtered = data.filter(item =>{
+      return filter.includes(item.Category)
+    })
+    console.log(filtered)
+    setFilteredData(filtered)
+  },[filter])
+
+  const handleFilters = (filters) =>{
+    setFilter(filters)
+      console.log(filters)
+      
+  }
   const handleSearch = (event) => {
       setSearch(event.target.value)
-      const filtered = data.filter(item=>{
+      const searched = data.filter(item=>{
         return item.program.toLowerCase().includes(search.toLowerCase())
       })
-      setFilteredData(filtered)
+      setSearchedData(searched)
     
   }
   return (
@@ -38,7 +60,8 @@ function App() {
     <SearchAppBar value={search} handleSearch={handleSearch}/>
     <Grid container className={classes.root} >
       <Box mt={10}>
-        <Directory data={(filteredData.length > 0 ? filteredData : data)} />
+        <FilterBtns handleFilters={handleFilters}/>
+        <Directory data={(search.length > 0 ? searchedData : filteredData)} />
       </Box>
     </Grid>
     </div>
