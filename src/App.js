@@ -14,9 +14,6 @@ import { spacing } from '@material-ui/system'
 
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -49,7 +46,7 @@ function App() {
   }
   const handleSearch = (event) => {
       setSearch(event.target.value)
-      const searched = data.filter(item=>{
+      const searched = filteredData.filter(item=>{
         return item.program.toLowerCase().includes(search.toLowerCase())
       })
       setSearchedData(searched)
@@ -58,11 +55,11 @@ function App() {
   return (
     <div>
     <SearchAppBar value={search} handleSearch={handleSearch}/>
-    <Grid container className={classes.root} >
+    <Grid container justify="center" spacing={3}>
       <Box mt={10}>
-        <FilterBtns handleFilters={handleFilters}/>
-        <Directory data={(search.length > 0 ? searchedData : filteredData)} />
+        <FilterBtns handleFilters={handleFilters} mx="auto"/>
       </Box>
+        <Directory data={(search.length > 0 ? searchedData : filteredData)} />
     </Grid>
     </div>
   );
