@@ -1,5 +1,5 @@
 import './App.css';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 
 import Data from './utils/Data'
@@ -26,20 +26,33 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const [data, setData] = useState(Data)
-  const [filter, setFilter] = useState([])
+  
+  const [filter, setFilter] = useState(['Housing', 'Substance use','Food', 'Mental Health', 'Multi', 'Other'])
   const [filteredData, setFilteredData] = useState([])
+  
   const [search, setSearch] = useState('')
+  const [searchedData, setSearchedData] = useState([])
   const classes = useStyles();
+
+  useEffect(()=>{
+    const filtered = data.filter(item =>{
+      return filter.includes(item.Category)
+    })
+    console.log(filtered)
+    setFilteredData(filtered)
+  },[filter])
 
   const handleFilters = (filters) =>{
     setFilter(filters)
+      console.log(filters)
+      
   }
   const handleSearch = (event) => {
       setSearch(event.target.value)
-      const filtered = data.filter(item=>{
+      const searched = data.filter(item=>{
         return item.program.toLowerCase().includes(search.toLowerCase())
       })
-      setFilteredData(filtered)
+      setSearchedData(searched)
     
   }
   return (
@@ -48,7 +61,7 @@ function App() {
     <Grid container className={classes.root} >
       <Box mt={10}>
         <FilterBtns handleFilters={handleFilters}/>
-        <Directory data={(search.length > 0 ? filteredData : data)} />
+        <Directory data={(search.length > 0 ? searchedData : filteredData)} />
       </Box>
     </Grid>
     </div>

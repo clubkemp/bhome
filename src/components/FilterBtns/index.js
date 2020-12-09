@@ -8,7 +8,7 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 export default function FilterBtns(props) {
-  const [formats, setFormats] = React.useState(() => ['bold', 'italic']);
+  const [formats, setFormats] = React.useState(() => ['Housing', 'Substance use','Food', 'Mental Health', 'Multi', 'Other']);
 
   const handleFormat = (event, newFormats) => {
     props.handleFilters(newFormats)
@@ -17,16 +17,16 @@ export default function FilterBtns(props) {
 
   return (
     <ToggleButtonGroup value={formats} onChange={handleFormat} aria-label="text formatting">
-      <ToggleButton value="bold" aria-label="bold">
+      <ToggleButton value="Housing" aria-label="Housing">
         <FormatBoldIcon />
       </ToggleButton>
-      <ToggleButton value="italic" aria-label="italic">
+      <ToggleButton value="Substance use" aria-label="Substance use">
         <FormatItalicIcon />
       </ToggleButton>
-      <ToggleButton value="underlined" aria-label="underlined">
+      <ToggleButton value="Food" aria-label="Food">
         <FormatUnderlinedIcon />
       </ToggleButton>
-      <ToggleButton value="color" aria-label="color" disabled>
+      <ToggleButton value="Mental Health" aria-label="Mental Health">
         <FormatColorFillIcon />
         <ArrowDropDownIcon />
       </ToggleButton>
