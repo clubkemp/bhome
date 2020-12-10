@@ -81,7 +81,7 @@ export default function SearchAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <NavTabs />
+          <NavTabs handleView={props.handleView}/>
           <Typography className={classes.title} variant="h6" noWrap>
             Bhome - Resources for those looking for help
           </Typography>
