@@ -11,6 +11,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import MapIcon from '@material-ui/icons/Map';
 import Tooltip from '@material-ui/core/Tooltip';
 
+import NavTabs from '../NavTabs';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -79,19 +81,7 @@ export default function SearchAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-        <ToggleButtonGroup
-        value={view}
-        exclusive   
-        onChange={handleView}
-        aria-label="component view"
-        >
-            <ToggleButton value="directory" aria-label="directory button" className={classes.menuButton} color="inherit">
-                <ListAltIcon />
-            </ToggleButton>
-            <ToggleButton value="map" aria-label="map button" className={classes.menuButton} color="inherit">
-                <MapIcon />
-            </ToggleButton>
-        </ToggleButtonGroup>
+          <NavTabs />
           <Typography className={classes.title} variant="h6" noWrap>
             Bhome - Resources for those looking for help
           </Typography>
