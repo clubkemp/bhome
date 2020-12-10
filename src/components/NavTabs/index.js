@@ -15,16 +15,17 @@ const useStyles = makeStyles({
     maxWidth: 200,
   },
   tab:{
-    minWidth: 5, // a number of your choice
+    minWidth: 5,
     width: 50
   }
 });
 
-export default function NavTabs() {
+export default function NavTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
+    props.handleView(newValue)
     setValue(newValue);
   };
 
