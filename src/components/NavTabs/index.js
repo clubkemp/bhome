@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -22,10 +22,13 @@ const useStyles = makeStyles({
 
 export default function NavTabs(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
+  // setup the initial value of the view: 0=list 1=map
+  const [value, setValue] = useState(0);
+  // handle the tab change
   const handleChange = (event, newValue) => {
+    //fire the passed down handleView action based on the new value
     props.handleView(newValue)
+    // update the value based on the tab
     setValue(newValue);
   };
 
