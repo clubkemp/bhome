@@ -1,3 +1,4 @@
+// Navigation bar for the top of page
 import React, {useState} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -68,14 +69,16 @@ const useStyles = makeStyles((theme) => ({
     },
   }
 }));
-
+// passed in handleView, handleSearch, value
 export default function SearchAppBar(props) {
+  // use styles defined above
   const classes = useStyles();
-  const [view, setView] = useState('directory');
-
-  const handleView = (event, newView) => {
-    setView(newView);
-  };
+  // state for the view the user is in, ie map or directory
+  // const [view, setView] = useState(0);
+  // // new handleView function to pass down to the navTabs
+  // const handleView = (event, newView) => {
+  //   setView(newView);
+  // };
 
   return (
     <div className={classes.root}>

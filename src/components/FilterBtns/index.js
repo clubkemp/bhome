@@ -1,9 +1,4 @@
-import React from 'react';
-import FormatBoldIcon from '@material-ui/icons/FormatBold';
-import FormatItalicIcon from '@material-ui/icons/FormatItalic';
-import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
-import FormatColorFillIcon from '@material-ui/icons/FormatColorFill';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import React, {useState} from 'react';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
@@ -14,16 +9,15 @@ import HomeWorkIcon from '@material-ui/icons/HomeWork';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+// takes in handleFilters and filter
 export default function FilterBtns(props) {
-  const [formats, setFormats] = React.useState(() => ['Housing', 'Substance use','Food', 'Mental Health', 'Multi', 'Other']);
-
+  // fire on change of the toggle buttons, sends filters back up to app.js
   const handleFormat = (event, newFormats) => {
     props.handleFilters(newFormats)
-    setFormats(newFormats);
   };
 
   return (
-    <ToggleButtonGroup value={formats} onChange={handleFormat} aria-label="text formatting">
+    <ToggleButtonGroup value={props.filter} onChange={handleFormat} aria-label="text formatting">
       <ToggleButton value="Housing" aria-label="Housing">
         <HomeWorkIcon />
       </ToggleButton>
