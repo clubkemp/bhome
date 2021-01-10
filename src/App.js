@@ -8,6 +8,7 @@ import Directory from './components/Directory'
 import FilterBtns from './components/FilterBtns'
 import MapComp from './components/MapComp'
 
+import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
@@ -85,6 +86,7 @@ function App() {
       </Box>
         {(view==="list" ? <Directory data={(search.length > 0 ? searchedData : filteredData)} /> : <MapComp data={(search.length > 0 ? searchedData : filteredData)}/>)}
     </Grid>
+   
     </div>
   );
 }

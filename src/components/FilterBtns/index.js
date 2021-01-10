@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import { red, green, blue, yellow, purple, teal  } from '@material-ui/core/colors';
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
@@ -19,22 +22,34 @@ export default function FilterBtns(props) {
   return (
     <ToggleButtonGroup value={props.filter} onChange={handleFormat} aria-label="text formatting">
       <ToggleButton value="Housing" aria-label="Housing">
-        <HomeWorkIcon />
+        <Tooltip  title="Housing" placement="top-start">
+          <HomeWorkIcon style={{color:red[500]}}/>
+        </Tooltip>
       </ToggleButton>
       <ToggleButton value="Substance use" aria-label="Substance use">
-        <HealingIcon />
+        <Tooltip  title="Substance use" placement="top-start">
+          <HealingIcon style={{color:green[500]}}/>
+        </Tooltip>
       </ToggleButton>
       <ToggleButton value="Food" aria-label="Food">
-        <RestaurantIcon />
+        <Tooltip  title="Food" placement="top-start">
+          <RestaurantIcon style={{color:purple[500]}}/>
+        </Tooltip>
       </ToggleButton>
       <ToggleButton value="Mental Health" aria-label="Mental Health">
-        <EmojiEmotionsIcon />
+        <Tooltip  title="Mental Health" placement="top-start">  
+          <EmojiEmotionsIcon style={{color:teal[500]}}/>
+        </Tooltip>
       </ToggleButton>
       <ToggleButton value="Multi" aria-label="Multi">
-        <DoneAllIcon />
+        <Tooltip  title="Multi" placement="top-start">  
+          <DoneAllIcon style={{color:yellow[800]}}/>
+        </Tooltip>
       </ToggleButton>
       <ToggleButton value="Other" aria-label="Other">
-        <MoreVertIcon />
+        <Tooltip  title="Other" placement="top-start">
+          <MoreVertIcon style={{color:blue[500]}}/>
+        </Tooltip>
       </ToggleButton>
     </ToggleButtonGroup>
   );
