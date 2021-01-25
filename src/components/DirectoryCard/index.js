@@ -61,27 +61,33 @@ export default function DirectoryCard({ data }) {
     setExpanded(!expanded);
   };
   // setup the var for the color of background
-  const avatarColor = {backgroundColor:green[0]}
-  
+  const color = {backgroundColor:green[0]}
+  const banner = {height:"75px"}
   // toggles the avatar to match the category
   const avatarGen = (category) =>{
     if(category === 'Housing'){
-      avatarColor.backgroundColor = red[500]
+      color.backgroundColor = red[500]
+      banner.backgroundColor = red[500]
       return <HomeWorkIcon  />
     }else if(category === 'Substance use'){
-      avatarColor.backgroundColor = green[500]
+      color.backgroundColor = green[500]
+      banner.backgroundColor = green[500]
       return <HealingIcon />
     }else if (category === 'Food'){
-      avatarColor.backgroundColor = purple[500]
+      color.backgroundColor = purple[500]
+      banner.backgroundColor = purple[500]
       return <RestaurantIcon />
     }else if (category ==='Mental Health'){
-      avatarColor.backgroundColor = teal[500]
+      color.backgroundColor = teal[500]
+      banner.backgroundColor = teal[500]
       return <EmojiEmotionsIcon />
     }else if (category === 'Multi'){
-      avatarColor.backgroundColor = yellow[800]
+      color.backgroundColor = yellow[800]
+      banner.backgroundColor = yellow[800]
       return <DoneAllIcon />
     }else{
-      avatarColor.backgroundColor = blue[500]
+      color.backgroundColor = blue[500]
+      banner.backgroundColor = blue[500]
       return <MoreVertIcon />
     }
   }
@@ -105,7 +111,7 @@ export default function DirectoryCard({ data }) {
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" style={avatarColor}>
+          <Avatar aria-label="recipe" style={color}>
             {avatarGen(data.Category)}
           </Avatar>
         }
@@ -117,11 +123,18 @@ export default function DirectoryCard({ data }) {
         title={data.program}
         subheader={data.organization}
       />
-      <CardMedia
+      <Grid container >
+        <Grid item container xs={12} alignItems="center" justify="center" style={banner} >
+            <Typography variant="h5" style={{ color: "white" }}>
+              {data.Category}
+            </Typography>
+        </Grid>
+      </Grid>
+      {/* <CardMedia
         className={classes.media}
         image="http://placekitten.com/g/200/300"
         title="Org image"
-      />
+      /> */}
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           All the little tidbits on the organization. What they offer, who they target, mission statement, whatever. Short and sweet and getting people clickable
