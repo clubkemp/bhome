@@ -137,7 +137,7 @@ export default function DirectoryCard({ data }) {
       /> */}
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          All the little tidbits on the organization. What they offer, who they target, mission statement, whatever. Short and sweet and getting people clickable
+          {data.blurb}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
