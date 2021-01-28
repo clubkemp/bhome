@@ -13,3 +13,7 @@
     height:100%;
     cursor: grab;
 }
+.leaflet-div-icon {
+    background: transparent;
+    border: none;
+}  

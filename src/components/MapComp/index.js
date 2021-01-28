@@ -8,6 +8,7 @@ import {
     Popup,
     Tooltip
   } from "react-leaflet";
+import { divIcon } from "leaflet";
 import DirectoryCard from '../DirectoryCard'
 
 import Typography from '@material-ui/core/Typography';
@@ -18,7 +19,19 @@ import LanguageIcon from '@material-ui/icons/Language';
 import LabelIcon from '@material-ui/icons/Label';
 import PeopleIcon from '@material-ui/icons/People';
 
+import { renderToStaticMarkup } from "react-dom/server";
+
+import { red, green, blue, yellow, purple, teal  } from '@material-ui/core/colors';
+
 export default function MapComp({ data, mapExtent }) {
+    const iconMarkup = renderToStaticMarkup(
+        <span style={{color: red[500]}} >
+            <i className=" fa fa-map-marker-alt fa-3x" />
+        </span>
+      );
+      const customMarkerIcon = divIcon({
+        html: iconMarkup
+      });
     
     return (
         <Grid container item spacing={3} justify="center">
@@ -30,7 +43,7 @@ export default function MapComp({ data, mapExtent }) {
                 />
                 {data.map((marker) => (
                     <Marker
-
+                        icon = {customMarkerIcon}
                         // key={`marker-${marker.id}`}
                         // id={marker.id}
                         eventHandlers={{
