@@ -37,6 +37,8 @@ function App() {
   const [search, setSearch] = useState('')
   //result of the filtered search
   const [searchedData, setSearchedData] = useState([])
+
+  const [mapExtent, setMapExtent] = useState({bounds:[48.798044, -122.282295], zoom:11})
   
   // the styles defined above
   const classes = useStyles();
@@ -73,18 +75,25 @@ function App() {
   const handleView = (viewToggle) =>{
     if(viewToggle === 0){
       setView("list")
+      setMapExtent({bounds:[48.798044, -122.282295], zoom:11})
     }else if(viewToggle === 1){
       setView("map")
     }
   }
+
+  const handleZoomTo = (lat, long) =>{
+    console.log(lat, long)
+    setMapExtent({bounds:[lat, long], zoom:18})
+    setView("map")
+  }
   return (
     <div>
-    <SearchAppBar value={search} handleSearch={handleSearch} handleView={handleView}/>
+    <SearchAppBar value={search} handleSearch={handleSearch} handleView={handleView} view={view}/>
     <Grid container justify="center" spacing={3}>
       <Box mt={10}>
         <FilterBtns filter={filter} handleFilters={handleFilters} mx="auto"/>
       </Box>
-        {(view==="list" ? <Directory data={(search.length > 0 ? searchedData : filteredData)} /> : <MapComp data={(search.length > 0 ? searchedData : filteredData)}/>)}
+        {(view==="list" ? <Directory handleZoomTo={handleZoomTo} data={(search.length > 0 ? searchedData : filteredData)} /> : <MapComp mapExtent={mapExtent} data={(search.length > 0 ? searchedData : filteredData)}/>)}
     </Grid>
    
     </div>

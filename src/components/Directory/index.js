@@ -10,7 +10,7 @@ export default function Directory(props) {
              {props.data.map(e=>{
                 return(
                 <Grid item>
-                    <DirectoryCard data={e}/>
+                    <DirectoryCard data={e} handleZoomTo={props.handleZoomTo}/>
                 </Grid>
                  )
             })}

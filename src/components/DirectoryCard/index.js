@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 // takes in the item of data being mapped over as data
-export default function DirectoryCard({ data }) {
+export default function DirectoryCard({ data, handleZoomTo }) {
   const classes = useStyles();
   // sets up the state for if a cards info is expanded 
   const [expanded, setExpanded] = useState(false);
@@ -116,7 +116,7 @@ export default function DirectoryCard({ data }) {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
+          <IconButton aria-label="settings" onClick={e=>handleZoomTo(data.lat, data.long)}>
             <MapIcon/>
           </IconButton>
         }
