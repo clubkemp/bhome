@@ -18,12 +18,12 @@ import LanguageIcon from '@material-ui/icons/Language';
 import LabelIcon from '@material-ui/icons/Label';
 import PeopleIcon from '@material-ui/icons/People';
 
-export default function MapComp({ data }) {
+export default function MapComp({ data, mapExtent }) {
     
     return (
         <Grid container item spacing={3} justify="center">
             <div id="mapWindow">
-                <MapContainer center={[48.798044, -122.282295]} zoom={10} scrollWheelZoom={false}>
+                <MapContainer center={mapExtent.bounds} zoom={mapExtent.zoom} scrollWheelZoom={false}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
