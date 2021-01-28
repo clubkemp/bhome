@@ -24,14 +24,43 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { red, green, blue, yellow, purple, teal  } from '@material-ui/core/colors';
 
 export default function MapComp({ data, mapExtent }) {
-    const iconMarkup = renderToStaticMarkup(
-        <span style={{color: red[500]}} >
+    
+    // function that takes in the data.category in each marker to determine the build of the icon
+    const buildIcon = (category) => {
+        // variable to fill with the category color
+        let colorCat 
+        // if category matches set the color
+        if (category === "Housing") {
+          colorCat = red[500];
+        } else if (category === "Substance use") {
+          colorCat = green[500];
+        } else if (category === "Food") {
+          colorCat = purple[500];
+        } else if (category === "Mental Health") {
+          colorCat = teal[500];
+        } else if (category === "Multi") {
+          colorCat = yellow[800];
+        } else {
+          colorCat = blue[500];
+        }
+        
+        // render the static markup for the icon and span to inherit the color
+        const iconMarkup = renderToStaticMarkup(
+        <span style={{color: colorCat}} >
             <i className=" fa fa-map-marker-alt fa-3x" />
         </span>
-      );
-      const customMarkerIcon = divIcon({
-        html: iconMarkup
-      });
+        );
+        // setup the divIcon that leaflet uses
+        const customMarkerIcon = divIcon({
+            html: iconMarkup,
+            iconAnchor:   [30, 30],
+            popupAnchor:  [-15, -30]
+        });
+        // return the marker so we can call this function in the marker component in our map
+        return customMarkerIcon
+    }
+    
+      
     
     return (
         <Grid container item spacing={3} justify="center">
@@ -43,7 +72,7 @@ export default function MapComp({ data, mapExtent }) {
                 />
                 {data.map((marker) => (
                     <Marker
-                        icon = {customMarkerIcon}
+                        icon = {buildIcon(marker.Category)}
                         // key={`marker-${marker.id}`}
                         // id={marker.id}
                         eventHandlers={{
