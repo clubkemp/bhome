@@ -7,6 +7,7 @@ import SearchAppBar from './components/AppBar'
 import Directory from './components/Directory'
 import FilterBtns from './components/FilterBtns'
 import MapComp from './components/MapComp'
+import Welcome from './components/Welcome'
 
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -29,7 +30,8 @@ function App() {
   // used to control if the user sees the list or the map
   const [view, setView] = useState("list")
   // used to filter the data based on the cateogy
-  const [filter, setFilter] = useState(['Housing', 'Substance use','Food', 'Mental Health', 'Multi', 'Other'])
+  // 'Housing', 'Substance use','Food', 'Mental Health', 'Multi', 'Other'
+  const [filter, setFilter] = useState([])
   // stores the filtered data as a new array keep the original data intact
   const [filteredData, setFilteredData] = useState([])
   
@@ -93,7 +95,8 @@ function App() {
       <Box mt={10}>
         <FilterBtns filter={filter} handleFilters={handleFilters} mx="auto"/>
       </Box>
-        {(view==="list" ? <Directory handleZoomTo={handleZoomTo} data={(search.length > 0 ? searchedData : filteredData)} /> : <MapComp mapExtent={mapExtent} data={(search.length > 0 ? searchedData : filteredData)}/>)}
+      {filter.length===0 ? <Welcome />: null}
+      {(view==="list" ? <Directory handleZoomTo={handleZoomTo} data={(search.length > 0 ? searchedData : filteredData)} /> : <MapComp mapExtent={mapExtent} data={(search.length > 0 ? searchedData : filteredData)}/>)} 
     </Grid>
    
     </div>
