@@ -23,12 +23,9 @@ import HealingIcon from '@material-ui/icons/Healing';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import PlaceIcon from '@material-ui/icons/Place';
-import PhoneIcon from '@material-ui/icons/Phone';
-import LanguageIcon from '@material-ui/icons/Language';
-import LabelIcon from '@material-ui/icons/Label';
-import PeopleIcon from '@material-ui/icons/People';
+
+
+import Details from '../Details'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,13 +89,7 @@ export default function DirectoryCard({ data, handleZoomTo }) {
       return <MoreVertIcon />
     }
   }
-  const handleBlank = (data) =>{
-    if(data){
-      return data
-    }else{
-      return 'Coming soon...'
-    }
-  }
+  
   // const avatarColor = (category) =>{
   //   if(category === 'Housing'){
   //     return { backgroundColor: green[500] }
@@ -162,70 +153,12 @@ export default function DirectoryCard({ data, handleZoomTo }) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-        {data.blurb.length <= 100 ? null :`...${data.blurb.substring(100,data.blurb.length)}`}
-        </Typography>
-        <Divider variant="middle" className={classes.divider} />
-          <Grid container direction="row" alignItems="center" spacing={1}>
-            <Grid item>
-              <AccessTimeIcon />
-            </Grid>
-            <Grid item>
-              <Typography variant="body2" color="textPrimary" component="p">
-                {handleBlank(data.hours)}
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container direction="row" alignItems="center" spacing={1}>
-            <Grid item>
-              <PlaceIcon />
-            </Grid>
-            <Grid item>
-              <Typography variant="body2" color="textPrimary" component="p">
-                {handleBlank(data.address)}
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container direction="row" alignItems="center" spacing={1}>
-            <Grid item>
-              <PhoneIcon /> 
-            </Grid>
-            <Grid item>
-            <Typography variant="body2" color="textPrimary" component="p">
-              {handleBlank(data.phone)}
-            </Typography>
-            </Grid>
-          </Grid>
-          <Grid container direction="row" alignItems="center" spacing={1}>
-            <Grid item>
-              <LanguageIcon />
-            </Grid>
-            <Grid item>
-            <Typography variant="body2" color="textPrimary" component="p">
-              {data.web ? <a href={`${data.web}`} target="_blank">{data.program} Website</a> : "Coming soon..."}
-            </Typography> 
-            </Grid>
-          </Grid>
-          <Grid container direction="row" alignItems="center" spacing={1}>
-            <Grid item>
-              <LabelIcon /> 
-            </Grid>
-            <Grid item>
-            <Typography variant="body2" color="textPrimary" component="p">
-              {handleBlank(data.services)}
-            </Typography>
-            </Grid>
-          </Grid>
-          <Grid container direction="row" alignItems="center" spacing={1}>
-            <Grid item>
-              <PeopleIcon /> 
-            </Grid>
-            <Grid item>
-            <Typography variant="body2" color="textPrimary" component="p">
-              {handleBlank(data.target)}
-            </Typography>
-            </Grid>
-          </Grid>
+          <Typography variant="body2" color="textSecondary" component="p">
+          {data.blurb.length <= 100 ? null :`...${data.blurb.substring(100,data.blurb.length)}`}
+          </Typography>
+          <Divider variant="middle" className={classes.divider} />
+          <Details data={data} />
+          
         </CardContent>
       </Collapse>
     </Card>

@@ -9,7 +9,7 @@ import {
     Tooltip
   } from "react-leaflet";
 import { divIcon } from "leaflet";
-import DirectoryCard from '../DirectoryCard'
+import Details from '../Details'
 
 import Typography from '@material-ui/core/Typography';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
@@ -87,69 +87,7 @@ export default function MapComp({ data, mapExtent }) {
                     >
                         <Tooltip>{marker.program}</Tooltip>
                         <Popup>
-                            <Grid container direction="row" alignItems="center">
-                                <Grid item>
-                                <AccessTimeIcon />
-                                </Grid>
-                                <Grid item>
-                                <Typography variant="body2" color="textPrimary" component="p">
-                                    {marker.hours}
-                                </Typography>
-                                </Grid>
-                            </Grid>
-                            <Grid container direction="row" alignItems="center">
-                                <Grid item>
-                                <PlaceIcon />
-                                </Grid>
-                                <Grid item>
-                                <Typography variant="body2" color="textPrimary" component="p">
-                                    {marker.address}
-                                </Typography>
-                                </Grid>
-                            </Grid>
-                            <Grid container direction="row" alignItems="center">
-                                <Grid item>
-                                <PhoneIcon /> 
-                                </Grid>
-                                <Grid item>
-                                <Typography variant="body2" color="textPrimary" component="p">
-                                {marker.phone}
-                                </Typography>
-                                </Grid>
-                            </Grid>
-                            <Grid container direction="row" alignItems="center">
-                                <Grid item>
-                                <LanguageIcon />
-                                </Grid>
-                                <Grid item>
-                                <Typography variant="body2" color="textPrimary" component="p">
-                                <a href={`${marker.web}`} target="_blank">{marker.program} Website</a>
-                                </Typography> 
-                                </Grid>
-                            </Grid>
-                            <Grid container direction="row" alignItems="center">
-                                <Grid item>
-                                <LabelIcon /> 
-                                </Grid>
-                                <Grid item>
-                                <Typography variant="body2" color="textPrimary" component="p">
-                                {marker.services}
-                                </Typography>
-                                </Grid>
-                            </Grid>
-                            <Grid container direction="row" alignItems="center">
-                                <Grid item>
-                                <PeopleIcon /> 
-                                </Grid>
-                                <Grid item>
-                                <Typography variant="body2" color="textPrimary" component="p">
-                                {marker.target}
-                                </Typography>
-                                </Grid>
-                            </Grid>
-                        {/* <HandlePointClick id={marker.id} /> */}
-                        {/* <div className="popupPlace">{marker.program}</div> */}
-                        {/* if edit state is actie give update and delte functionality */}
+                            <Details data={marker} />
                         </Popup>
                     </Marker>
                     ))}
