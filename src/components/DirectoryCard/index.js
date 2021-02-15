@@ -92,6 +92,13 @@ export default function DirectoryCard({ data, handleZoomTo }) {
       return <MoreVertIcon />
     }
   }
+  const handleBlank = (data) =>{
+    if(data){
+      return data
+    }else{
+      return 'Coming soon...'
+    }
+  }
   // const avatarColor = (category) =>{
   //   if(category === 'Housing'){
   //     return { backgroundColor: green[500] }
@@ -159,63 +166,63 @@ export default function DirectoryCard({ data, handleZoomTo }) {
         {data.blurb.length <= 100 ? null :`...${data.blurb.substring(100,data.blurb.length)}`}
         </Typography>
         <Divider variant="middle" className={classes.divider} />
-          <Grid container direction="row" alignItems="center">
+          <Grid container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <AccessTimeIcon />
             </Grid>
             <Grid item>
               <Typography variant="body2" color="textPrimary" component="p">
-                {data.hours}
+                {handleBlank(data.hours)}
               </Typography>
             </Grid>
           </Grid>
-          <Grid container direction="row" alignItems="center">
+          <Grid container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <PlaceIcon />
             </Grid>
             <Grid item>
               <Typography variant="body2" color="textPrimary" component="p">
-                {data.address}
+                {handleBlank(data.address)}
               </Typography>
             </Grid>
           </Grid>
-          <Grid container direction="row" alignItems="center">
+          <Grid container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <PhoneIcon /> 
             </Grid>
             <Grid item>
             <Typography variant="body2" color="textPrimary" component="p">
-              {data.phone}
+              {handleBlank(data.phone)}
             </Typography>
             </Grid>
           </Grid>
-          <Grid container direction="row" alignItems="center">
+          <Grid container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <LanguageIcon />
             </Grid>
             <Grid item>
             <Typography variant="body2" color="textPrimary" component="p">
-              <a href={`${data.web}`} target="_blank">{data.program} Website</a>
+              {data.web ? <a href={`${data.web}`} target="_blank">{data.program} Website</a> : "Coming soon..."}
             </Typography> 
             </Grid>
           </Grid>
-          <Grid container direction="row" alignItems="center">
+          <Grid container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <LabelIcon /> 
             </Grid>
             <Grid item>
             <Typography variant="body2" color="textPrimary" component="p">
-              {data.services}
+              {handleBlank(data.services)}
             </Typography>
             </Grid>
           </Grid>
-          <Grid container direction="row" alignItems="center">
+          <Grid container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <PeopleIcon /> 
             </Grid>
             <Grid item>
             <Typography variant="body2" color="textPrimary" component="p">
-              {data.target}
+              {handleBlank(data.target)}
             </Typography>
             </Grid>
           </Grid>
