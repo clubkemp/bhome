@@ -88,9 +88,10 @@ export default function MapComp({ data, mapExtent }) {
                     >
                         <Tooltip>{marker.program}</Tooltip>
                         <Popup>
-                            <CardContent>
-                                <Details data={marker} />
-                            </CardContent>
+                            <Typography variant="h6" align="center" color="textPrimary" gutterBottom>
+                                {marker.program}
+                            </Typography>
+                            <Details data={marker} />
                         </Popup>
                     </Marker>
                     ))}

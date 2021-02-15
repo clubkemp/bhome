@@ -1,7 +1,7 @@
 #mapWindow {
     position: relative;
-    height: 800px;
-    width:80%;
+    height: 600px;
+    width:100%;
     border:2px solid black;
     border-radius: 7px;
     margin-top: 13px;;
@@ -16,4 +16,14 @@
 .leaflet-div-icon {
     background: transparent;
     border: none;
-}  
+}
+.leaflet-popup-content p {
+    margin: 2px 0; 
+ }  
+ 
+ .leaflet-popup-content-wrapper {
+     width:345px;
+ }
+ .leaflet-popup-content {
+    width: 90%;
+ }
