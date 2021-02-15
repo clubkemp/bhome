@@ -138,7 +138,7 @@ export default function DirectoryCard({ data, handleZoomTo }) {
       /> */}
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {data.blurb.length <= 200 ? data.blurb :`${data.blurb.substring(0,200)}...`}
+          {data.blurb.length <= 100 ? data.blurb :`${data.blurb.substring(0,100)}...`}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -156,7 +156,7 @@ export default function DirectoryCard({ data, handleZoomTo }) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        {data.blurb.length <= 200 ? null :`...${data.blurb.substring(200,data.blurb.length)}`}
+        {data.blurb.length <= 100 ? null :`...${data.blurb.substring(100,data.blurb.length)}`}
         </Typography>
         <Divider variant="middle" className={classes.divider} />
           <Grid container direction="row" alignItems="center">
