@@ -1,6 +1,7 @@
 import React from 'react'
 import "./style.css";
 import Grid from '@material-ui/core/Grid';
+import CardContent from '@material-ui/core/CardContent';
 import {
     MapContainer,
     TileLayer,
@@ -87,7 +88,9 @@ export default function MapComp({ data, mapExtent }) {
                     >
                         <Tooltip>{marker.program}</Tooltip>
                         <Popup>
-                            <Details data={marker} />
+                            <CardContent>
+                                <Details data={marker} />
+                            </CardContent>
                         </Popup>
                     </Marker>
                     ))}

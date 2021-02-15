@@ -1,4 +1,5 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import PlaceIcon from '@material-ui/icons/Place';
@@ -10,12 +11,14 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
   address: {
-    color: "red",
+    display: "flex",
+    flexDirection:"column"
   },
   
 }));
 
 export default function Details({ data }) {
+  const classes = useStyles();
 
   const handleBlank = (data) =>{
     if(data){
@@ -24,9 +27,32 @@ export default function Details({ data }) {
       return 'Coming soon...'
     }
   }
+  const handleAddress = (add) =>{
+    if (add){
+      return (
+        <div>
+          <Typography variant="body2" color="textPrimary" component="p" flexDirection="column">
+            {data.add}
+          </Typography>
+          <Typography variant="body2" color="textPrimary" component="p" flexDirection="column">
+            {data.City}
+          </Typography>
+          <Typography variant="body2" color="textPrimary" component="p" flexDirection="column">
+            {data.State} {data.Zip}
+          </Typography>
+        </div>
+      );
+    }else{
+      return(
+        <Typography variant="body2" color="textPrimary" component="p" flexDirection="column">
+          Coming soon...
+        </Typography>
+      )
+    }
+  }
     return (
         <div>
-            <Grid container direction="row" alignItems="center" spacing={1}>
+          <Grid item container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <AccessTimeIcon />
             </Grid>
@@ -36,17 +62,15 @@ export default function Details({ data }) {
               </Typography>
             </Grid>
           </Grid>
-          <Grid container direction="row" alignItems="center" spacing={1}>
+          <Grid item container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <PlaceIcon />
             </Grid>
             <Grid item>
-              <Typography className={}variant="body2" color="textPrimary" component="p">
-                {handleBlank(data.Zip)}
-              </Typography>
+              {handleAddress(data.add)}
             </Grid>
           </Grid>
-          <Grid container direction="row" alignItems="center" spacing={1}>
+          <Grid item container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <PhoneIcon /> 
             </Grid>
@@ -56,17 +80,17 @@ export default function Details({ data }) {
             </Typography>
             </Grid>
           </Grid>
-          <Grid container direction="row" alignItems="center" spacing={1}>
+          <Grid item container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <LanguageIcon />
             </Grid>
             <Grid item>
-            <Typography variant="body2" color="textPrimary" component="p">
+            <Typography noWrap variant="body2" color="textPrimary" component="p">
               {data.web ? <a href={`${data.web}`} target="_blank">{data.program} Website</a> : "Coming soon..."}
             </Typography> 
             </Grid>
           </Grid>
-          <Grid container direction="row" alignItems="center" spacing={1}>
+          <Grid item container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <LabelIcon /> 
             </Grid>
@@ -76,7 +100,7 @@ export default function Details({ data }) {
             </Typography>
             </Grid>
           </Grid>
-          <Grid container direction="row" alignItems="center" spacing={1}>
+          <Grid item container direction="row" alignItems="center" spacing={1}>
             <Grid item>
               <PeopleIcon /> 
             </Grid>
