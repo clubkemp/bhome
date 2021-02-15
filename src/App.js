@@ -2,7 +2,7 @@ import './App.css';
 import {useState, useEffect} from 'react'
 
 
-import Data from './utils/Data'
+import JSONdata from './utils/Data'
 import SearchAppBar from './components/AppBar'
 import Directory from './components/Directory'
 import FilterBtns from './components/FilterBtns'
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   // set the data as the data imported above form data.json
-  const [data, setData] = useState(Data)
+  const [data, setData] = useState(JSONdata.filter(e => e.Category))
   // used to control if the user sees the list or the map
   const [view, setView] = useState("list")
   // used to filter the data based on the cateogy
@@ -45,6 +45,7 @@ function App() {
   // the styles defined above
   const classes = useStyles();
 
+  
   // on render, or DOM update...
   useEffect(()=>{
     // creat a filtered variable to hold filtered data and use filter method to fill it based on filter state
