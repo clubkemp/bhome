@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
+import Divider from '@material-ui/core/Divider';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
@@ -47,9 +48,9 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
-  // avatar: {
-  //   backgroundColor: red[500],
-  // },
+  divider:{
+    margin: "25px 0px"
+  }
 }));
 // takes in the item of data being mapped over as data
 export default function DirectoryCard({ data, handleZoomTo }) {
@@ -137,7 +138,7 @@ export default function DirectoryCard({ data, handleZoomTo }) {
       /> */}
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {data.blurb}
+          {data.blurb.length <= 200 ? data.blurb :`${data.blurb.substring(0,200)}...`}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -154,6 +155,10 @@ export default function DirectoryCard({ data, handleZoomTo }) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p">
+        {data.blurb.length <= 200 ? null :`...${data.blurb.substring(200,data.blurb.length)}`}
+        </Typography>
+        <Divider variant="middle" className={classes.divider} />
           <Grid container direction="row" alignItems="center">
             <Grid item>
               <AccessTimeIcon />
